@@ -64,4 +64,9 @@ const getCountryByName = async (name) => {
     return [...countryFilter, ...dbCountry];
 };
 
-module.exports = { createCountry, getCountryById, getAllCountries, getCountryByName };
+module.exports = {
+    createCountry,
+    getCountryById,
+    getAllCountries,
+    getCountryByName
+};

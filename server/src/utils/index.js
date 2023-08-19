@@ -1,6 +1,7 @@
 const cleanerApiInfo = (array) => {
     return array.map((country) => {
         return {
+            id: country.cca3,
             nombre: country.name.common,
             bandera: country.flags.png,
             continente: country.continents[0],

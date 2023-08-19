@@ -21,13 +21,12 @@ module.exports = (sequelize) => {
             },
         },
         duracion: {
-            type: DataTypes.TIME,
+            type: DataTypes.INTEGER,
             allowNull: false,
-            get() { // Método ara formatear el valor de duración "2 horas"
-                const hours = this.getDataValue("duracion");
-                const formattedHours = hours ? `${hours} horas` : null;
+            /*get() {
+                const formattedHours = `${this.duracion} horas`;
                 return formattedHours;
-            },
+            },*/
         },
         temporada: {
             type: DataTypes.ENUM('Verano', 'Otoño', 'Invierno', 'Primavera'),

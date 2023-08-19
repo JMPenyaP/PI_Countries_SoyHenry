@@ -1,5 +1,6 @@
 require("dotenv").config(); //Dependencia para leer archivo .env
 const { Sequelize } = require("sequelize"); // Importar Sequelize para que JS interactue con la DDBB
+
 // Importar módulos de Node.js
 const fs = require('fs');
 const path = require('path');
@@ -9,7 +10,6 @@ const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`, {
   logging: false,
   native: false,
-  //dialect: 'postgres',
 });
 // Obtener el nombre del archivo actual
 const basename = path.basename(__filename);
@@ -28,7 +28,7 @@ modelDefiners.forEach(model => model(sequelize));
 let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
-// Obtener el modelo "Country" desde sequelize
+// Obtener el modelos desde sequelize
 const { Country, Activity } = sequelize.models;
 
 // Aca vendrian las relaciones/asociaciones

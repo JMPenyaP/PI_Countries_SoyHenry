@@ -10,12 +10,12 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("Country", {
     id: {
-      type: DataTypes.STRING(3), // Define el tipo de dato como una cadena de longitud 3
+      type: DataTypes.STRING, // (3)Define el tipo de dato como una cadena de longitud 3
       primaryKey: true, // Define como primary key
       allowNull: false, // No permite valores nulos
-      validate: {
+      /*validate: {
         is: /^[A-Za-z]{3}$/ // Expresión regular para tres letras (mayúsculas o minúsculas)
-      }
+      }*/
     },
     nombre: {
       type: DataTypes.STRING,
