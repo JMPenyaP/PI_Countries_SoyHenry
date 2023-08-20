@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
   sequelize.define("Country", {
     id: {
       type: DataTypes.STRING, // (3)Define el tipo de dato como una cadena de longitud 3
-      primaryKey: true, // Define como primary key
+      primaryKey: true,
       allowNull: false, // No permite valores nulos
       /*validate: {
         is: /^[A-Za-z]{3}$/ // Expresión regular para tres letras (mayúsculas o minúsculas)
@@ -45,13 +45,9 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    created: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
-    },
   },
     { timestamps: false },
-    {
+    /*{
       hooks: {
         beforeValidate: (instance) => {
           if (instance.id) {
@@ -65,6 +61,6 @@ module.exports = (sequelize) => {
           instance.nombre = capitalizeWords(instance.nombre);
         },
       }
-    },
+    },*/
   );
 };

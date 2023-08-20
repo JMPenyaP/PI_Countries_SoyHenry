@@ -1,4 +1,4 @@
-const { createActivity } = require("../controllers/activitiesController");
+const { createActivity, getAllActivities } = require("../controllers/activitiesController");
 
 //! Crear Actividad
 const createActivitiesHandler = async (req, res) => {
@@ -20,7 +20,7 @@ const getActivitiesHandler = async (req, res) => {
         res.status(200).json({ success: true, data: allActivities });
     }
     catch (error) {
-        res.status(400).json({ success: false, message: "No se encontraron Actividades" + error.message });
+        res.status(400).json({ success: false, message: "No se encontraron Actividades. " + error.message });
     }
 };
 
