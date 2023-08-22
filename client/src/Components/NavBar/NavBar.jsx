@@ -1,9 +1,11 @@
-import React from "react";
+import React from 'react'
+import style from './NavBar.module.css'
+import SearchBar from '../SearchBar/SearchBar'
 
-const NavBar = () => {
-    return (
-        <div>NavBar</div>
-    );
-};
-
-export default NavBar;
+export default function NavBar({ onSearchChange }) {
+   return (
+      <div className={style.container}>
+         <SearchBar onSearchChange={onSearchChange} />
+      </div>
+   )
+}

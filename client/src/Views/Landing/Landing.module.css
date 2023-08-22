@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;800&display=swap');
+
+.page {
+    background-image: url('../../Images/mapamundi.jpg');
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    background-color: rgba(0, 51, 255, 0.77);
+    font-family: poppins;
+    border-radius: 10px;
+    padding: 20px;
+    display: inline-block;
+}
+
+.title h1 {
+    color: rgb(255, 255, 255);
+}
+
+.landingButton {
+    background-color: rgba(0, 51, 255, 0.77);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: poppins;
+    font-weight: 400;
+    display: inline-block;
+    margin-top: 40px;
+}
+
+.landingButton:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.landingButton a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.landingButton a:hover {
+    color: #ffffff;
+}

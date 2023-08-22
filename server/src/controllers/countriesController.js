@@ -4,8 +4,8 @@ const { Country, Activity } = require("../db");
 const { cleanerApiInfo } = require("../utils/index"); */
 
 //! Crear un nuevo País
-const createCountry = async (id, nombre, bandera, continente, capital, subregion, area, poblacion) => {
-    return await Country.create({ id, nombre, bandera, continente, capital, subregion, area, poblacion });
+const createCountry = async (id, name, flag, continent, capital, subregion, area, population) => {
+    return await Country.create({ id, name, flag, continent, capital, subregion, area, population });
 };
 
 //! Obtener un País por ID
@@ -15,7 +15,7 @@ const getCountryById = async (id) => {
             where: { id },
             include: {
                 model: Activity,
-                attributes: ["nombre", "dificultad"],
+                attributes: ["name", "difficulty"],
                 through: { attributes: ["CountryId", "ActivityId"] }
             },
             attributes: {
@@ -47,7 +47,7 @@ const getAllCountries = async () => {
 
 //! Obtener un País por Nombre
 const getCountryByName = async (name) => {
-    const dbCountry = await Country.findAll({ where: { nombre: name } });
+    const dbCountry = await Country.findAll({ where: { name: name } });
 
     /*     const apiCountryResponse = (await axios.get("http://localhost:5000/countries/")).data;
         const apiCountry = cleanerApiInfo(apiCountryResponse);

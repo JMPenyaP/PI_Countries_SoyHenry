@@ -1,20 +1,20 @@
-import React from "react";
-import NavBar from "./Components/NavBar/NavBar";
-import Search from "./Components/SearchDiv/Search";
-import Jobs from "./Components/JobsDiv/Jobs";
-import Value from "./Components/ValueDiv/Value";
-import Footer from "./Components/FooterDiv/Footer";
+import { Route, Routes } from 'react-router-dom'
+import './App.css'
+import Landing from './Views/Landing/Landing';
+import Home from './Views/Home/Home';
+import Form from './Views/Form/Form';
+import DetailPage from './Components/DetailPage/DetailPage'
 
-const App = () => {
+export default function App() {
+
   return (
     <div>
-      <NavBar />
-      <Search />
-      <Jobs />
-      <Value />
-      <Footer />
+      <Routes>
+        <Route path='/' element={<Landing />} />
+        <Route path='/Home' element={<Home />} />
+        <Route path='/Form' element={<Form />} />
+        <Route path='/detail/:id' element={<DetailPage />} />
+      </Routes>
     </div>
   );
-};
-
-export default App;
+}

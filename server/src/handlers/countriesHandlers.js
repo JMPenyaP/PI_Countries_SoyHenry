@@ -32,9 +32,9 @@ const detailCountriesHandler = async (req, res) => {
 
 //! Crear un nuevo País
 const createCountryHandler = async (req, res) => {
-    const { id, nombre, bandera, continente, capital, subregion, area, poblacion } = req.body;
+    const { id, name, flag, continent, capital, subregion, area, population } = req.body;
     try {
-        const response = await createCountry(id, nombre, bandera, continente, capital, subregion, area, poblacion)
+        const response = await createCountry(id, name, flag, continent, capital, subregion, area, population)
         res.status(200).json(response) // estamos devolviendo un objeto
     }
     catch (error) {

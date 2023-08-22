@@ -1,0 +1,42 @@
+/* Card.module.css */
+.card {
+   border: 1px solid #e1e1e1;
+   border-radius: 8px;
+   padding: 16px;
+   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+   background-color: #ffffff;
+   text-align: center;
+   width: calc(15% - 5px);
+   /* Ancho del 25% y se resta el margen */
+   margin-bottom: 10px;
+   transition: transform 0.2s ease-in-out;
+
+   &:hover {
+      transform: scale(1.05);
+   }
+}
+
+.image {
+   width: 90%;
+   /* Ajusta el tamaño del círculo según tus necesidades */
+   height: 90%;
+   /* Ajusta el tamaño del círculo según tus necesidades */
+   margin: 0 auto;
+   /* Centra la imagen horizontalmente dentro del círculo */
+   border-radius: 50%;
+   /* Hace que la imagen sea completamente circular */
+   overflow: hidden;
+   /* Asegura que la imagen no se desborde del círculo */
+}
+
+h2 {
+   margin: 0;
+   font-size: 1.5rem;
+   font-weight: 600;
+}
+
+h4 {
+   margin: 0;
+   font-size: 1rem;
+   font-weight: 400;
+}

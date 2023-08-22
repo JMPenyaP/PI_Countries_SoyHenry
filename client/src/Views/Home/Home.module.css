@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;800&display=swap');
+
+.homeContainer {
+    font-family: 'poppins', sans-serif;
+    text-align: center;
+    color: #2a68ff;
+    background-color: #90909025;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.image {
+    background-image: url('../../Images/mapamundi.gif');
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}

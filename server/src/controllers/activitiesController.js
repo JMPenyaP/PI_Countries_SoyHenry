@@ -2,9 +2,9 @@ const { Activity } = require("../db"); // importamos modelo
 const { op } = require('sequelize');
 
 //! Crear Actividad
-const createActivity = async (nombre, dificultad, duracion, temporada, countries) => {
+const createActivity = async (name, difficulty, duration, season, countries) => {
 
-    const newActivity = await Activity.create({ nombre, dificultad, duracion, temporada });
+    const newActivity = await Activity.create({ name, difficulty, duration, season });
 
     const countryActivity = await newActivity.addCountry(countries);
 
@@ -20,7 +20,7 @@ const getAllActivities = async () => {
 
 module.exports = { createActivity, getAllActivities };
 
-/*//? Verificar la Actividad existe
+/*// Verificar la Actividad existe
 const isRepeatActivity = await Activity.findOne({
     where: {
         nombre: nombre,

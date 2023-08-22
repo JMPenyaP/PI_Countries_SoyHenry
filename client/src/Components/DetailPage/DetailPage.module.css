@@ -1,0 +1,57 @@
+.container {
+   border: 1px solid #e1e1e1;
+   border-radius: 8px;
+   padding: 16px;
+   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+   background-color: #ffffff;
+   text-align: center;
+   width: calc(20% - 40px);
+   /* Ancho del 25% y se resta el margen */
+   margin: 0 auto;
+   /* Centra horizontalmente el contenedor */
+   margin-bottom: 10px;
+   transition: transform 0.2s ease-in-out;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   /* Centra verticalmente el contenido */
+}
+
+.container:hover {
+   transform: scale(1.05);
+}
+
+.image {
+   width: 250px;
+   /* Ajusta el tamaño del círculo según tus necesidades */
+   height: 250px;
+   /* Ajusta el tamaño del círculo según tus necesidades */
+   border-radius: 50%;
+   /* Hace que la imagen sea completamente circular */
+   overflow: hidden;
+   /* Asegura que la imagen no se desborde del círculo */
+}
+
+h2 {
+   margin: 0;
+   font-size: 1.5rem;
+}
+
+.backButton {
+   background-color: #ffffff;
+   padding: 10px 20px;
+   border-radius: 10px;
+   cursor: pointer;
+   transition: background-color 0.3s, color 0.3s;
+   text-decoration: none;
+}
+
+/* Estilos para el botón al pasar el cursor sobre él */
+.backButton:hover {
+   background-color: #cd3232;
+   /* Cambio de color de fondo en hover */
+   color: #ffffff;
+   /* Cambio de color de texto en hover */
+
+}

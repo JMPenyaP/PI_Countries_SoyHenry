@@ -14,23 +14,22 @@ conn.sync({ force: false }).then(async () => {
       try {
         const countriesFromAPI = await Country.findAll();
         if (!countriesFromAPI.length) {
-          /*const response = await axios.get(API);
+          const response = await axios.get(API);
           const cleanResponse = cleanerApiInfo(response.data);
           await Country.bulkCreate(cleanResponse);
-          console.log(cleanResponse);*/
-          const { data } = await axios.get(API);
+
+          /*const { data } = await axios.get(API);
           const cleanApiInfo = data.map((info) => ({
             id: info.cca3,
-            nombre: info.name.common,
-            bandera: info.flags.svg,
-            continente: info.continents[0],
+            name: info.name.common,
+            flag: info.flags.svg,
+            continent: info.continents[0],
             capital: info.capital ? info.capital[0] : 'Capital doesnt exist',
             subregion: info.subregion ? info.subregion : 'Subregion doesnt exist',
             area: info.area,
-            poblacion: info.population,
+            population: info.population,
           }));
-          await Country.bulkCreate(cleanApiInfo)
-          //console.log(cleanApiInfo)
+          await Country.bulkCreate(cleanApiInfo)*/
         }
       } catch (error) {
         console.error("Error while fetching and processing API data:", error);

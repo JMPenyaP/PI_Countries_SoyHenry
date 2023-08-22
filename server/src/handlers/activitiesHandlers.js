@@ -2,10 +2,10 @@ const { createActivity, getAllActivities } = require("../controllers/activitiesC
 
 //! Crear Actividad
 const createActivitiesHandler = async (req, res) => {
-    const { nombre, dificultad, duracion, temporada, countries } = req.body;
+    const { name, difficulty, duration, season, countries } = req.body;
 
     try {
-        const newActivity = await createActivity(nombre, dificultad, duracion, temporada, countries);
+        const newActivity = await createActivity(name, difficulty, duration, season, countries);
         res.status(200).json({ success: true, data: newActivity });
     }
     catch (error) {

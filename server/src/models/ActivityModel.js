@@ -8,11 +8,11 @@ module.exports = (sequelize) => {
             primaryKey: true,
             allowNull: false,
         },
-        nombre: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        dificultad: {
+        difficulty: {
             type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
                 max: 5,
             },
         },
-        duracion: {
+        duration: {
             type: DataTypes.INTEGER,
             allowNull: false,
             /*get() {
@@ -28,8 +28,8 @@ module.exports = (sequelize) => {
                 return formattedHours;
             },*/
         },
-        temporada: {
-            type: DataTypes.ENUM('Verano', 'Otoño', 'Invierno', 'Primavera'),
+        season: {
+            type: DataTypes.ENUM('Summer', 'Autumn', 'Winter', 'Spring'),
             allowNull: false,
         },
     },

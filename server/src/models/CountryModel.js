@@ -17,15 +17,15 @@ module.exports = (sequelize) => {
         is: /^[A-Za-z]{3}$/ // Expresión regular para tres letras (mayúsculas o minúsculas)
       }*/
     },
-    nombre: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    bandera: {
+    flag: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    continente: {
+    continent: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -41,7 +41,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    poblacion: {
+    population: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

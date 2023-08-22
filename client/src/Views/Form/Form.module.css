@@ -1,0 +1,69 @@
+/* Estilos generales para el formulario */
+.head {
+    align-items: center;
+    text-align: center;
+}
+
+.formContainer {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+/* Estilos para los campos de entrada */
+.formInput {
+    width: 90%;
+    padding: 9px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: relative;
+}
+
+/* Estilos para los botones */
+.formButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: darkseagreen;
+    color: #fff;
+    cursor: pointer;
+}
+
+.formButton:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para los mensajes de error */
+.errorMessage {
+    color: #dc3545;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+/* Estilos para etiquetas */
+.formLabel {
+    font-weight: bold;
+    padding: 10px;
+}
+
+/* Estilos para contenedor de botones */
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.select {
+    display: flex;
+    padding: 2px;
+    font-size: 12px;
+    position: relative;
+    width: 50%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
