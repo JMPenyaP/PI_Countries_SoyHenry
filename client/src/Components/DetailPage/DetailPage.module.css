@@ -1,36 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;800&display=swap');
+
 .container {
+   font-family: 'poppins', sans-serif;
+   color: #2a68ff;
    border: 1px solid #e1e1e1;
-   border-radius: 8px;
+   border-radius: 12px;
    padding: 16px;
    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
    background-color: #ffffff;
    text-align: center;
-   width: calc(20% - 40px);
+   width: calc(80% - 40px);
    /* Ancho del 25% y se resta el margen */
-   margin: 0 auto;
-   /* Centra horizontalmente el contenedor */
-   margin-bottom: 10px;
+   margin: 10px auto;
    transition: transform 0.2s ease-in-out;
+   flex-direction: row;
+
    display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   /* Centra verticalmente el contenido */
+   flex-wrap: wrap;
+   /* Permite que los elementos se envuelvan cuando no hay suficiente espacio */
+   justify-content: space-between;
+   /* Espacio entre las columnas */
+   align-items: flex-start;
+   /* Alinea los elementos en la parte superior */
 }
 
-.container:hover {
-   transform: scale(1.05);
+.column,
+.column2 {
+   flex-basis: calc(50% - 10px);
+   /* Ancho del 50% menos los márgenes entre las columnas */
+   margin: 5px;
+   /* Márgenes entre las columnas */
+   box-sizing: border-box;
+   /* Incluye el padding y borde en el tamaño total */
 }
+
+.column {
+   /* flex: 1; */
+   /* Distribuye el espacio disponible de manera equitativa entre las columnas */
+   padding: 20px;
+   /* Espacio interno para separar el contenido */
+}
+
+.column2 {
+   text-align: left;
+   /*  flex: 1; */
+   /* Distribuye el espacio disponible de manera equitativa entre las columnas */
+   padding: 20px;
+   /* Espacio interno para separar el contenido */
+   border: 1px solid #ccc;
+   border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+
+   .column,
+   .column2 {
+      flex-basis: 100%;
+      /* Ancho completo en pantallas pequeñas */
+      margin: 10px 0;
+      /* Margen superior e inferior en pantallas pequeñas */
+   }
+}
+
+/* .container:hover {
+   transform: scale(1.05);
+} */
 
 .image {
-   width: 250px;
-   /* Ajusta el tamaño del círculo según tus necesidades */
-   height: 250px;
-   /* Ajusta el tamaño del círculo según tus necesidades */
-   border-radius: 50%;
-   /* Hace que la imagen sea completamente circular */
+   max-width: 100%;
+   /* La imagen ocupará como máximo el ancho del contenedor */
+   height: auto;
+   /* El alto se ajustará automáticamente para mantener la proporción */
    overflow: hidden;
    /* Asegura que la imagen no se desborde del círculo */
+}
+
+.title {
+   background-color: #2a68ff;
+   border-radius: 12px;
+   text-align: center;
+   font-family: 'poppins', sans-serif;
+   color: #ffffff;
+   margin: auto 40px;
+   padding: 10px 0;
 }
 
 h2 {
@@ -39,19 +91,37 @@ h2 {
 }
 
 .backButton {
+   font-family: 'poppins', sans-serif;
+   font-size: large;
+   color: #2a68ff;
    background-color: #ffffff;
-   padding: 10px 20px;
+   padding: 10px 30px;
    border-radius: 10px;
    cursor: pointer;
    transition: background-color 0.3s, color 0.3s;
    text-decoration: none;
 }
 
+.container a,
+.backButton a,
+:hover {
+   text-decoration: none;
+}
+
+
 /* Estilos para el botón al pasar el cursor sobre él */
 .backButton:hover {
-   background-color: #cd3232;
+   background-color: #2a68ff;
    /* Cambio de color de fondo en hover */
    color: #ffffff;
    /* Cambio de color de texto en hover */
 
+}
+
+.buttonContainer {
+   background-color: #aeaeae;
+   border-radius: 12px;
+   text-align: center;
+   padding: 10px 0;
+   margin: auto 40px;
 }

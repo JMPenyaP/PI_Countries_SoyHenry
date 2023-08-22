@@ -21,6 +21,8 @@ let initialState = {
    allCountriesCopy: [],
    countryDetail: [],
    allActivities: [],
+   countries: [],
+   filteredCountries: [],
    numPage: 1,
 };
 

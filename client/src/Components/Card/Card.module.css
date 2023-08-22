@@ -2,13 +2,14 @@
 .card {
    border: 1px solid #e1e1e1;
    border-radius: 8px;
-   padding: 16px;
+   padding: 8px;
    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-   background-color: #ffffff;
+   background-color: #ebebeb;
    text-align: center;
-   width: calc(15% - 5px);
+   width: 16%;
    /* Ancho del 25% y se resta el margen */
-   margin-bottom: 10px;
+   height: calc(120%);
+   margin: 10px;
    transition: transform 0.2s ease-in-out;
 
    &:hover {
@@ -17,26 +18,36 @@
 }
 
 .image {
-   width: 90%;
-   /* Ajusta el tamaño del círculo según tus necesidades */
-   height: 90%;
-   /* Ajusta el tamaño del círculo según tus necesidades */
-   margin: 0 auto;
-   /* Centra la imagen horizontalmente dentro del círculo */
-   border-radius: 50%;
-   /* Hace que la imagen sea completamente circular */
+   width: 150px;
+   /* Tamaño deseado para el círculo */
+   height: 100px;
+   margin: 20px auto;
+   /* Margen para separar las imágenes */
+   border-radius: 8%;
+   /* Hace que el div sea un círculo */
    overflow: hidden;
-   /* Asegura que la imagen no se desborde del círculo */
+   /* Oculta cualquier parte de la imagen que esté fuera del círculo */
+   background-color: #f0f0f0;
+   /* Color de fondo del círculo */
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
-h2 {
+.image img {
+   max-width: 100%;
+   /* Asegura que la imagen no se desborde del círculo */
+   max-height: 100%;
+}
+
+h3 {
    margin: 0;
-   font-size: 1.5rem;
+   font-size: 1rem;
    font-weight: 600;
 }
 
 h4 {
    margin: 0;
    font-size: 1rem;
-   font-weight: 400;
+   font-weight: 300;
 }
