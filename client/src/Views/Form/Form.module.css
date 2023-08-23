@@ -1,41 +1,64 @@
 /* Estilos generales para el formulario */
 .head {
-    align-items: center;
+    background-color: #2a68ff;
+    border-radius: 12px;
     text-align: center;
+    font-family: 'poppins', sans-serif;
+    color: #ffffff;
+    margin: auto 40px;
+    padding: 10px 0;
 }
 
 .formContainer {
+    font-family: 'poppins', sans-serif;
+    color: #2a68ff;
     max-width: 400px;
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 10px 12px 14px rgba(0, 0, 0, 0.524);
     background-color: #f9f9f9;
+    border: 12px #2a68ff solid;
 }
 
-/* Estilos para los campos de entrada */
-.formInput {
+.formContainer input,
+.formContainer select {
+    font-size: large;
+    color: #2a68ff;
+    border: solid 1px #2a68ff;
+    border-radius: 12px;
+    position: relative;
     width: 90%;
     padding: 9px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    position: relative;
 }
 
-/* Estilos para los botones */
-.formButton {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    background-color: darkseagreen;
+.formContainer button {
+    font-family: 'poppins', sans-serif;
+    font-size: large;
+    background-color: #2a68ff;
     color: #fff;
     cursor: pointer;
+    border: 0;
+    padding: 5px 9px;
+    border-radius: 12px;
+    margin-right: 5px;
+    margin-top: 10px;
 }
 
-.formButton:hover {
-    background-color: #0056b3;
+.formContainer a,
+.formContainer a:hover {
+    text-decoration: none;
+    color: inherit;
 }
+
+.formContainer button:hover {
+    background-color: #ffffff;
+    color: #2a68ff;
+    border: 2px solid #2a68ff;
+}
+
+
 
 /* Estilos para los mensajes de error */
 .errorMessage {

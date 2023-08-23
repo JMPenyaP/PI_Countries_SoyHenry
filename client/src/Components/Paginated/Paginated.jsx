@@ -1,7 +1,7 @@
 import { nextPage, prevPage } from '../../Redux/Actions/actions'
 import { useDispatch, useSelector } from 'react-redux'
 
-export default function Paginated(countries) {
+export default function Paginated({ totalPages }) {
 
    const { numPage } = useSelector(state => state)
    const dispatch = useDispatch();
@@ -16,11 +16,10 @@ export default function Paginated(countries) {
 
    return (
       <div>
-         <h4>Page: {numPage}</h4>
+         <h4>Page: {numPage}/{totalPages} </h4>
          <div>
             <button onClick={prevHandler} disabled={numPage === 1}>Prev</button>
-
-            <button onClick={nextHandler} >Next</button>
+            <button onClick={nextHandler} disabled={numPage === totalPages}>Next</button>
          </div>
       </div>
    )

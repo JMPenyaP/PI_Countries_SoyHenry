@@ -15,10 +15,9 @@ export default function SearchBar() {
       dispatch(getCountryByName(name));
    };
 
-
    return (
       <div>
-         <label htmlFor="searchInput">Clic aquí para buscar países por nombre</label>
+         <label htmlFor="searchInput">Search your Country: </label>
          <input type="text" id='searchInput' value={name} onChange={inputHandler} />
          <button onClick={() => { submitHandler(); setName('') }}>Search</button>
       </div>

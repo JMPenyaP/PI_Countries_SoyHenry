@@ -5,26 +5,26 @@ import styles from './Filters.module.css';
 
 export default function Filters({ countries }) {
    const dispatch = useDispatch();
-   const [selectedContinent, setSelectedContinent] = useState('All countries');
+   const [selectedContinent, setSelectedContinent] = useState('All');
 
    const handleFilterContinent = (event) => {
       const selectedContinent = event.target.value;
       setSelectedContinent(selectedContinent); // Update selectedContinent state
 
-      if (selectedContinent === 'All countries') {
-         dispatch(filteringCountries(countries)); // Reset to original countries
+      if (selectedContinent === 'All') {
+         //dispatch(filteringCountries(countries)); // Reset to original countries
+         setSelectedContinent(countries);
       } else {
          const filteredCountries = countries.filter(country => country.continent === selectedContinent);
          dispatch(filteringCountries(filteredCountries));
       }
-      setSelectedContinent(selectedContinent);
    }
 
    return (
       <div className={styles.container}>
          <h4>Filter By Continent: </h4>
          <select onChange={handleFilterContinent} value={selectedContinent} title='Click here to filter by continent' name="continent">
-            <option value="All countries">All countries</option>
+            <option value="All">All countries</option>
             <option value="Africa">Africa</option>
             <option value="Antarctica">Antarctica</option>
             <option value="Asia">Asia</option>

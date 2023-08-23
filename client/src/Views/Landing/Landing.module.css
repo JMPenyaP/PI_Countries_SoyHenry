@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;800&display=swap');
 
 .page {
-    background-image: url('../../Images/mapamundi.jpg');
+    background-image: url('../../images/mapamundi.jpg');
     background-position: center;
     background-size: cover;
     min-height: 100vh;

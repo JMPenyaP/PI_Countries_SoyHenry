@@ -7,6 +7,10 @@ export default function NavBar() {
    return (
       <div className={style.container}>
          <SearchBar />
+         <button>Reset</button>
+         <button>
+            <Link to='/form'>Create Activity</Link>
+         </button>
       </div>
    )
 }

@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import styles from './Sorting.module.css';
 
 export default function Sort({ countries }) {
-
    const [sort, setSort] = useState([]);
    const dispatch = useDispatch();
 
@@ -32,13 +31,9 @@ export default function Sort({ countries }) {
    return (
       <div className={styles.container}>
          <h4>Sorting</h4>
-
          <button onClick={() => handleSort('name', 'asc')} title='Click here to sort ascending'>A-Z (ASC)</button>
-
          <button onClick={() => handleSort('name', 'desc')} title='Click here to sort descending'>Z-A (DESC)</button>
-
          <button onClick={() => handleSort('population', 'more')} title='Click here to sort by amount of population (More)'>More population</button>
-
          <button onClick={() => handleSort('population', 'less')} title='Click here to sort by amount of population (Less)'>Less population</button>
 
       </div>

@@ -17,10 +17,11 @@ export default function Cards() {
       return () => dispatch(disassembleCountries())
    }, [dispatch])
 
-   const qxpage = 10;
-   const startIndex = (currentPage - 1) * qxpage;
-   const endIndex = startIndex + qxpage;
-   const countriesPage = countries.slice(startIndex, endIndex)
+   const cardsXPage = 10;
+   const startIndex = (currentPage - 1) * cardsXPage;
+   const endIndex = startIndex + cardsXPage;
+   const countriesPage = countries.slice(startIndex, endIndex);
+   const totalPages = Math.ceil(countries.length / cardsXPage);
 
    return (
       <div>
@@ -28,7 +29,7 @@ export default function Cards() {
             <div className={style.column}><Sorting countries={countries} /></div>
             <div className={style.column}><Filters countries={countries} /></div>
          </div>
-         <Paginated />
+         <Paginated totalPages={totalPages} />
          <div className={style.container}>
             {countriesPage.length > 0 ? (
                countriesPage.map((country) => (
