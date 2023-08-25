@@ -90,3 +90,16 @@
     border-radius: 4px;
     margin-bottom: 10px;
 }
+
+.successMessage {
+    font-family: 'poppins', sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    max-width: 420px;
+    margin: 10px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background-color: rgba(0, 128, 0, 0.505);
+    text-align: center;
+}
