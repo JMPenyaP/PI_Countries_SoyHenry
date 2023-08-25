@@ -74,11 +74,11 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             numPage: state.numPage - 1
          }
-      // case POST_ACTIVITIES:
-      //    return {
-      //       ...state,
-      //       allActivities: payload
-      //    }
+      case POST_ACTIVITIES:
+         return {
+            ...state,
+            allActivities: payload
+         }
       // case GET_ACTIVITIES:
       //    return {
       //       ...state,

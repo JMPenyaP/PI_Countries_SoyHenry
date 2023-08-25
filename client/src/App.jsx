@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Landing from './Views/Landing/Landing';
 import Home from './Views/Home/Home';
-import Form from './Views/Form/Form';
+import Form from './Views/Form/CreateActivity';
 import DetailPage from './Components/DetailPage/DetailPage'
 
 export default function App() {
