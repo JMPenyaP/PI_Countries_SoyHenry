@@ -3,14 +3,31 @@ import { useDispatch } from 'react-redux';
 import { filteringCountries } from '../../Redux/Actions/actions';
 import styles from './Filters.module.css';
 
-export default function Filters({ countries }) {
-   const dispatch = useDispatch();
+export default function Filters({ countries, onFilterChange }) {
+   //const dispatch = useDispatch();
    const [selectedContinent, setSelectedContinent] = useState('All');
+   const [filteredCountries, setFilteredCountries] = useState(countries); // Initialize with all countries
 
    const handleFilterContinent = (event) => {
       const selectedContinent = event.target.value;
+      setSelectedContinent(selectedContinent);
+      //console.log("CONT SELECTED: ", selectedContinent)
+      if (selectedContinent === 'All') {
+         onFilterChange(countries); // Reset to original countries
+         console.log("ALL CONTINENT: ", countries)
+      } else {
+         const filtered = countries.filter(country => country.continent === selectedContinent);
+         onFilterChange(filtered);
+         //dispatch(filteringCountries(filteredCountries));
+         console.log("CONTINENT FILTERED: ", filtered)
+      }
+   }
+   /*
+   const dispatch = useDispatch();
+   const [selectedContinent, setSelectedContinent] = useState('All');
+   const handleFilterContinent = (event) => {
+      const selectedContinent = event.target.value;
       setSelectedContinent(selectedContinent); // Update selectedContinent state
-
       if (selectedContinent === 'All') {
          //dispatch(filteringCountries(countries)); // Reset to original countries
          setSelectedContinent(countries);
@@ -19,11 +36,12 @@ export default function Filters({ countries }) {
          dispatch(filteringCountries(filteredCountries));
       }
    }
+   */
 
    return (
       <div className={styles.container}>
          <h4>Filter By Continent: </h4>
-         <select onChange={handleFilterContinent} value={selectedContinent} title='Click here to filter by continent' name="continent">
+         <select onChange={handleFilterContinent} title='Click here to filter by continent' name="continent">
             <option value="All">All countries</option>
             <option value="Africa">Africa</option>
             <option value="Antarctica">Antarctica</option>

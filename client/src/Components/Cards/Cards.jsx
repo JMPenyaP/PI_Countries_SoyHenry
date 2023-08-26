@@ -1,7 +1,7 @@
 import style from './Cards.module.css'
 import Card from '../../Components/Card/Card'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { getAllCountries, disassembleCountries } from '../../Redux/Actions/actions'
 import Sorting from '../Sorting/Sorting'
 import Filters from '../Filters/Filters'
@@ -11,6 +11,15 @@ export default function Cards() {
    const dispatch = useDispatch();
    const countries = useSelector(state => state.allCountries);
    const currentPage = useSelector(state => state.numPage)
+   const [filteredCountries, setFilteredCountries] = useState([]);
+
+   const handleFilterChange = (filtered) => {
+      setFilteredCountries(filtered);
+   }
+
+   useEffect(() => {
+      setFilteredCountries(countries);
+   }, [countries])
 
    useEffect(() => {
       dispatch(getAllCountries());
@@ -20,14 +29,16 @@ export default function Cards() {
    const cardsXPage = 10;
    const startIndex = (currentPage - 1) * cardsXPage;
    const endIndex = startIndex + cardsXPage;
-   const countriesPage = countries.slice(startIndex, endIndex);
-   const totalPages = Math.ceil(countries.length / cardsXPage);
+   const countriesPage = filteredCountries.slice(startIndex, endIndex);
+   const totalPages = Math.ceil(filteredCountries.length / cardsXPage);
 
    return (
       <div>
          <div className={style.optionsContainer}>
             <div className={style.column}><Sorting countries={countries} /></div>
-            <div className={style.column}><Filters countries={countries} /></div>
+            {/* <div className={style.column}><Filters countries={countries} /></div> */}
+            <div className={style.column}><Filters countries={countries} onFilterChange={handleFilterChange} /></div>
+
          </div>
          <Paginated totalPages={totalPages} />
          <div className={style.container}>
