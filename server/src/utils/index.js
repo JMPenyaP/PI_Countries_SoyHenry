@@ -9,7 +9,7 @@ const cleanerApiInfo = (array) => {
             capital: country.capital ? country.capital[0] : 'Capital doesnt exist',
             subregion: country.subregion ? country.subregion : "Subregion doesnt exist",
             area: country.area,
-            population: country.population,
+            population: country.population ? country.population : 'No data.',
         };
     });
 };

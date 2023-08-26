@@ -38,6 +38,10 @@ export default function Cards() {
          sortedFiltered.sort((a, b) => a.name.localeCompare(b.name));
       } else if (sortingOption === 'DESC') {
          sortedFiltered.sort((a, b) => b.name.localeCompare(a.name));
+      } else if (sortingOption === 'MORE') {
+         sortedFiltered.sort((a, b) => a.population - b.population);
+      } else if (sortingOption === 'LESS') {
+         sortedFiltered.sort((a, b) => b.population - a.population);
       }
       setFilteredCountries(sortedFiltered);
    }, [sortingOption, filteredCountries]);
@@ -65,6 +69,7 @@ export default function Cards() {
                      name={country.name}
                      flag={country.flag}
                      continent={country.continent}
+                     population={country.population ? country.population : 'No data'}
                   />
                ))
             ) : (
