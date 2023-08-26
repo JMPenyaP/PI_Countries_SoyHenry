@@ -10,33 +10,16 @@ export default function Filters({ countries, onFilterChange }) {
 
    const handleFilterContinent = (event) => {
       const selectedContinent = event.target.value;
-      setSelectedContinent(selectedContinent);
-      //console.log("CONT SELECTED: ", selectedContinent)
+      //setSelectedContinent(selectedContinent);
+
       if (selectedContinent === 'All') {
+         setSelectedContinent('All');
          onFilterChange(countries); // Reset to original countries
-         console.log("ALL CONTINENT: ", countries)
       } else {
          const filtered = countries.filter(country => country.continent === selectedContinent);
          onFilterChange(filtered);
-         //dispatch(filteringCountries(filteredCountries));
-         console.log("CONTINENT FILTERED: ", filtered)
       }
    }
-   /*
-   const dispatch = useDispatch();
-   const [selectedContinent, setSelectedContinent] = useState('All');
-   const handleFilterContinent = (event) => {
-      const selectedContinent = event.target.value;
-      setSelectedContinent(selectedContinent); // Update selectedContinent state
-      if (selectedContinent === 'All') {
-         //dispatch(filteringCountries(countries)); // Reset to original countries
-         setSelectedContinent(countries);
-      } else {
-         const filteredCountries = countries.filter(country => country.continent === selectedContinent);
-         dispatch(filteringCountries(filteredCountries));
-      }
-   }
-   */
 
    return (
       <div className={styles.container}>

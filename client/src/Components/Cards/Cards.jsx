@@ -12,9 +12,14 @@ export default function Cards() {
    const countries = useSelector(state => state.allCountries);
    const currentPage = useSelector(state => state.numPage)
    const [filteredCountries, setFilteredCountries] = useState([]);
+   const [sortingOption, setSortingOption] = useState("");
 
    const handleFilterChange = (filtered) => {
       setFilteredCountries(filtered);
+   }
+
+   const handleSortChange = (option) => {
+      setSortingOption(option);
    }
 
    useEffect(() => {
@@ -26,6 +31,18 @@ export default function Cards() {
       return () => dispatch(disassembleCountries())
    }, [dispatch])
 
+   useEffect(() => {
+      let sortedFiltered = [...filteredCountries];
+
+      if (sortingOption === 'ASC') {
+         sortedFiltered.sort((a, b) => a.name.localeCompare(b.name));
+      } else if (sortingOption === 'DESC') {
+         sortedFiltered.sort((a, b) => b.name.localeCompare(a.name));
+      }
+      setFilteredCountries(sortedFiltered);
+   }, [sortingOption, filteredCountries]);
+
+
    const cardsXPage = 10;
    const startIndex = (currentPage - 1) * cardsXPage;
    const endIndex = startIndex + cardsXPage;
@@ -35,10 +52,8 @@ export default function Cards() {
    return (
       <div>
          <div className={style.optionsContainer}>
-            <div className={style.column}><Sorting countries={countries} /></div>
-            {/* <div className={style.column}><Filters countries={countries} /></div> */}
+            <div className={style.column}><Sorting onSortChange={handleSortChange} /></div>
             <div className={style.column}><Filters countries={countries} onFilterChange={handleFilterChange} /></div>
-
          </div>
          <Paginated totalPages={totalPages} />
          <div className={style.container}>
