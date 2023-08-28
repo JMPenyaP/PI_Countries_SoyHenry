@@ -37,7 +37,7 @@ const reducer = (state = initialState, { type, payload }) => {
       case ActionTypes.GET_COUNTRIES_BY_NAME:
          return {
             ...state,
-            allCountries: payload
+            allCountriesCopy: payload
          };
       case ActionTypes.NEXT_PAGE:
          return {

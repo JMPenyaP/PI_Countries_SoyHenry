@@ -39,7 +39,7 @@ export const getCountryById = (id) => async (dispatch) => {
 export const getCountryByName = (name) => async (dispatch) => {
    try {
       const lowerCaseName = name.toLowerCase();
-      const response = await axios.get(`http://localhost:3001/countries/?name=${name}`);
+      const response = await axios.get(`http://localhost:3001/countries`);
       const filterCountry = response.data.filter(country =>
          country.name.toLowerCase().includes(lowerCaseName));
       dispatch({ type: ActionTypes.GET_COUNTRIES_BY_NAME, payload: filterCountry });
@@ -84,28 +84,3 @@ export const setSortOption = (sortOption) => ({
    type: ActionTypes.SET_SORT_OPTION,
    payload: sortOption
 });
-//=====================================================
-/*
-export const sortingAndFilteringCountries = () => (dispatch, getState) => {
-   const { filter, sortOption, allCountriesCopy } = getState();
-   let sortedFiltered = [...allCountriesCopy];
-
-   if (sortOption === 'ASC') {
-      sortedFiltered.sort((a, b) => a.name.localeCompare(b.name));
-   } else if (sortOption === 'DESC') {
-      sortedFiltered.sort((a, b) => b.name.localeCompare(a.name));
-   } else if (sortOption === 'MORE') {
-      sortedFiltered.sort((a, b) => a.population - b.population);
-   } else if (sortOption === 'LESS') {
-      sortedFiltered.sort((a, b) => b.population - a.population);
-   }
-
-   const filtered =
-      filter === 'All'
-         ? sortedFiltered
-         : sortedFiltered.filter(country => country.continent === filter);
-
-   dispatch(setFilteredCountries(filtered));
-};
-*/
-// fin ===================================================
