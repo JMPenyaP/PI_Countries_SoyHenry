@@ -1,85 +1,48 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { filteringCountries } from '../../Redux/Actions/actions';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilteredCountries } from '../../Redux/Actions/actions';
 import styles from './Filters.module.css';
 
-export default function Filters({ countries, onFilterChange }) {
-   //const dispatch = useDispatch();
-   const [selectedContinent, setSelectedContinent] = useState('All');
-   const [filteredCountries, setFilteredCountries] = useState(countries); // Initialize with all countries
+const continentOptions = [
+   { value: 'All', label: 'All countries' },
+   { value: 'Africa', label: 'Africa' },
+   { value: 'Antarctica', label: 'Antarctica' },
+   { value: 'Asia', label: 'Asia' },
+   { value: 'Europe', label: 'Europe' },
+   { value: 'North America', label: 'North America' },
+   { value: 'South America', label: 'South America' },
+   { value: 'Oceania', label: 'Oceania' }
+];
+
+export default function Filters() {
+   const dispatch = useDispatch();
+   const countries = useSelector(state => state.allCountries);
 
    const handleFilterContinent = (event) => {
       const selectedContinent = event.target.value;
-      //setSelectedContinent(selectedContinent);
-
       if (selectedContinent === 'All') {
-         setSelectedContinent('All');
-         onFilterChange(countries); // Reset to original countries
+         dispatch(setFilteredCountries(countries)); // Reset to original countries
+
       } else {
          const filtered = countries.filter(country => country.continent === selectedContinent);
-         onFilterChange(filtered);
+         dispatch(setFilteredCountries(filtered));
       }
    }
 
    return (
       <div className={styles.container}>
          <h4>Filter By Continent: </h4>
-         <select onChange={handleFilterContinent} title='Click here to filter by continent' name="continent">
-            <option value="All">All countries</option>
-            <option value="Africa">Africa</option>
-            <option value="Antarctica">Antarctica</option>
-            <option value="Asia">Asia</option>
-            <option value="Europe">Europe</option>
-            <option value="North America">North America</option>
-            <option value="South America">South America</option>
-            <option value="Oceania">Oceania</option>
+         <select
+            onChange={handleFilterContinent}
+            title='Click here to filter by continent'
+            name="continent"
+         >
+            {continentOptions.map(option => (
+               <option key={option.value} value={option.value}>
+                  {option.label}
+               </option>
+            ))}
          </select>
       </div>
    )
 }
-
-
-
-
-
-
-/*import React, { useState } from 'react'
-import { filteringCountries } from '../../Redux/Actions/actions'
-import { useDispatch } from 'react-redux'
-import styles from './Filters.module.css';
-
-export default function Filters({ countries }) {
-   const dispatch = useDispatch();
-   const [selectedContinent, setCurrentContinent] = useState('');
-
-   const handleFilterContinent = (event) => {
-      const toFilter = [...countries];
-      const selectedContinent = event.target.value;
-
-      if (selectedContinent === "All countries") {
-         dispatch(filteringCountries(toFilter));
-      }
-      else {
-         const filteredCountries = toFilter.filter(country => country.continent === selectedContinent);
-         dispatch(filteringCountries(filteredCountries))
-      }
-      setCurrentContinent(selectedContinent);
-   }
-
-   return (
-      <div className={styles.container}>
-         <h4>Filter By Continent: </h4>
-         <select onChange={handleFilterContinent} title='Click here to filter by continent'>Continent
-            <option value="All countries">All countries</option>
-            <option value="Africa">Africa</option>
-            <option value="Antarctica">Antarctica</option>
-            <option value="Asia">Asia</option>
-            <option value="Europe">Europe</option>
-            <option value="North America">North America</option>
-            <option value="South America">South America</option>
-            <option value="Oceania">Oceania</option>
-         </select>
-      </div>
-   )
-}
-*/

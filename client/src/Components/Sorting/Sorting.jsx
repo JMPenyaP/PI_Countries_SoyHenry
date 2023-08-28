@@ -1,22 +1,46 @@
-import React, { useState } from 'react'
-import { filteringCountries, sortingCountries } from '../../Redux/Actions/actions';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSortOption } from '../../Redux/Actions/actions';
 import styles from './Sorting.module.css';
 
-export default function Sorting({ onSortChange }) {
-   const handleSortChange = (event) => {
-      const sortOption = event.target.value;
-      onSortChange(sortOption);
+const sortingOptions = [
+   { value: 'ASC', label: 'A - Z (by name)' },
+   { value: 'DESC', label: 'Z - A (by name)' },
+   { value: 'MORE', label: '0 - 9 (by population)' },
+   { value: 'LESS', label: '9 - 0 (by population)' }
+];
 
-   }
+export default function Sorting() {
+   const dispatch = useDispatch();
+   const countries = useSelector(state => state.allCountriesCopy);
+
+   const handleSortChange = (sortOption) => {
+
+      if (sortOption === 'ASC') {
+         countries.sort((a, b) => a.name.localeCompare(b.name));
+      } else if (sortOption === 'DESC') {
+         countries.sort((a, b) => b.name.localeCompare(a.name));
+      } else if (sortOption === 'MORE') {
+         countries.sort((a, b) => a.population - b.population);
+      } else if (sortOption === 'LESS') {
+         countries.sort((a, b) => b.population - a.population);
+      }
+
+      dispatch(setSortOption(sortOption));
+   };
+
    return (
       <div className={styles.container}>
          <h4>Sorting</h4>
-
-         <button onClick={handleSortChange} value="ASC">A - Z (by name)</button>
-         <button onClick={handleSortChange} value="DESC">Z - A (by name)</button>
-         <button onClick={handleSortChange} value="MORE">0 - 9 (by population)</button>
-         <button onClick={handleSortChange} value="LESS">9 - 0 (by population)</button>
+         {sortingOptions.map(option => (
+            <button
+               key={option.value}
+               onClick={() => handleSortChange(option.value)}
+               value={option.value}
+            >
+               {option.label}
+            </button>
+         ))}
       </div>
    );
 }

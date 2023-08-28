@@ -18,7 +18,7 @@ export default function SearchBar() {
    return (
       <div>
          <label htmlFor="searchInput">Search your Country: </label>
-         <input type="text" id='searchInput' value={name} onChange={inputHandler} />
+         <input type="text" id={name} value={name} onChange={inputHandler} />
          <button onClick={() => { submitHandler(); setName('') }}>Search</button>
       </div>
    )

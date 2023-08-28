@@ -1,98 +1,71 @@
-import {
-   GET_ALL_COUNTRIES,
-   GET_COUNTRY_DETAIL,
-   DISASSEMBLE_COUNTRIES,
-   DISASSEMBLE_DETAIL,
-   GET_COUNTRIES_BY_ID,
-   GET_COUNTRIES_BY_NAME,
-   SORTING_COUNTRIES,
-   FILTERING_COUNTRIES,
-   POST_ACTIVITIES,
-   GET_ACTIVITIES,
-   GET_ACTIVITIES_WITH_COUNTRIES,
-   NEXT_PAGE,
-   PREV_PAGE
-} from '../Actions/actionTypes'
+import { ActionTypes } from '../Actions/actionTypes'
 
-
-//! Estado inicial de almacenamiento.
-let initialState = {
+const initialState = {
    allCountries: [],
    allCountriesCopy: [],
-   countryDetail: [],
+   countryDetail: {},
    allActivities: [],
-   countries: [],
    filteredCountries: [],
    numPage: 1,
+   filter: 'All',
+   sortOption: 'ASC'
 };
 
 const reducer = (state = initialState, { type, payload }) => {
    switch (type) {
-      case GET_ALL_COUNTRIES:
+      case ActionTypes.GET_ALL_COUNTRIES:
          return {
             ...state,
             allCountries: payload,
             allCountriesCopy: payload
-         }
-      case GET_COUNTRY_DETAIL:
+         };
+      case ActionTypes.GET_COUNTRY_DETAIL:
          return {
             ...state,
             countryDetail: payload
-         }
-      case DISASSEMBLE_DETAIL:
+         };
+      case ActionTypes.DISASSEMBLE_DETAIL:
          return {
             ...state,
             countryDetail: {}
-         }
-      case DISASSEMBLE_COUNTRIES:
+         };
+      case ActionTypes.DISASSEMBLE_COUNTRIES:
          return {
             ...state,
             allCountries: []
-         }
-      case GET_COUNTRIES_BY_NAME:
+         };
+      case ActionTypes.GET_COUNTRIES_BY_NAME:
          return {
             ...state,
             allCountries: payload
-         }
-      case SORTING_COUNTRIES:
-         return {
-            ...state,
-            allCountries: payload
-         }
-      case FILTERING_COUNTRIES:
-         return {
-            ...state,
-            allCountries: payload
-         }
-      case NEXT_PAGE:
+         };
+      case ActionTypes.NEXT_PAGE:
          return {
             ...state,
             numPage: state.numPage + 1
-         }
-      case PREV_PAGE:
+         };
+      case ActionTypes.PREV_PAGE:
          return {
             ...state,
             numPage: state.numPage - 1
-         }
-      case POST_ACTIVITIES:
+         };
+      case ActionTypes.POST_ACTIVITIES:
          return {
             ...state,
             allActivities: payload
-         }
-      // case GET_ACTIVITIES:
-      //    return {
-      //       ...state,
-      //       allActivities: payload
-      //    }
-      // case GET_ACTIVITIES_WITH_COUNTRIES:
-      //    return {
-      //       ...state,
-      //       allActivities: payload
-      //    }
-      default:
+         };
+      case ActionTypes.SET_FILTERED_COUNTRIES:
          return {
-            ...state
-         }
+            ...state,
+            allCountriesCopy: payload
+         };
+      case ActionTypes.SET_SORT_OPTION:
+         return {
+            ...state,
+            sortOption: payload
+         };
+      default:
+         return state;
    }
 }
 
