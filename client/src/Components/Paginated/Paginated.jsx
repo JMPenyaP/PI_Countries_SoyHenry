@@ -16,7 +16,7 @@ export default function Paginated({ totalPages }) {
 
    return (
       <div>
-         <h4>Page: {numPage}/{totalPages} </h4>
+         <h4>Page: {numPage}/{totalPages}</h4>
          <div>
             <button onClick={prevHandler} disabled={numPage === 1}>Prev</button>
             <button onClick={nextHandler} disabled={numPage === totalPages}>Next</button>

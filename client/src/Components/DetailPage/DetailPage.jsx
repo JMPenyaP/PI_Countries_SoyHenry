@@ -10,9 +10,9 @@ export default function Detail() {
    const countryDetail = useSelector(state => state.countryDetail);
 
    useEffect(() => {
-      dispatch(getCountryDetail(id)); //*Dismount.
-      return () => dispatch(disassembleDetail()) //*Unmount.
-   }, []) //*Update.
+      dispatch(getCountryDetail(id));
+      return () => dispatch(disassembleDetail())
+   }, [])
 
    return (
       <div>
@@ -36,6 +36,26 @@ export default function Detail() {
                <h2>{countryDetail.area}</h2>
                <h4>Population</h4>
                <h2>{countryDetail.population}</h2>
+            </div>
+            <div>
+               <h2>Activities:</h2>
+               {countryDetail.Activities ? (
+                  <ul>
+                     {countryDetail.Activities.map(activity => (
+                        <li key={activity.name}>
+                           <div>
+                              <p><b>Name: {activity.name}</b></p>
+                              <p>Difficulty: {activity.difficulty}</p>
+                              <p>Duration: {activity.duration}</p>
+                              <p>Season: {activity.season}</p>
+                           </div>
+                        </li>
+                     ))}
+                  </ul>
+               ) : (
+                  <p>No activities available</p>
+               )}
+
             </div>
          </div>
          <div className={style.buttonContainer}>

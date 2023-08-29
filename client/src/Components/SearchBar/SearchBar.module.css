@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;800&display=swap');
 
-.catcher {
-    margin: 0 6px;
+.catcher input {
     font-family: 'poppins', sans-serif;
-    font-weight: 600;
-    color: #252b36;
-    border-radius: 6px;
+    color: #2a68ff;
+    font-size: x-large;
 }
 
 .buttonSearch {

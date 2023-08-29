@@ -59,17 +59,33 @@ export const postActivities = (createActivity) => async (dispatch) => {
 
 export const getAllActivities = () => async (dispatch) => {
    try {
-      const response = await axios.get("http://localhost:3001/countries/activities");
-      dispatch({ type: ActionTypes.GET_ACTIVITIES, payload: response.data });
+      const response = await axios.get("http://localhost:3001/activities");
+      const allActivities = response.data;
+
+      dispatch({ type: ActionTypes.GET_ALL_ACTIVITIES, payload: allActivities });
    } catch (error) {
       console.log(error);
    }
 };
 
-export const getAllActivitiesWCountries = () => async (dispatch) => {
+export const getAllCountriesWithActivities = () => async (dispatch) => {
    try {
-      const response = await axios.get("http://localhost:3001/countries/activities/countries");
-      dispatch({ type: ActionTypes.GET_ACTIVITIES_WITH_COUNTRIES, payload: response.data });
+      const response = await axios.get("http://localhost:3001/countries/activities");
+      const dataResponse = response.data;
+      dispatch({ type: ActionTypes.GET_ALL_COUNTRIES_WITH_ACTIVITIES, payload: dataResponse });
+   } catch (error) {
+      console.log(error);
+   }
+};
+
+export const getCountriesWithActivityByName = (activityName) => async (dispatch) => {
+   try {
+      const response = await axios.get(`http://localhost:3001/countries/activities`);
+      const dataResponse = response.data;
+      const filtered = dataResponse.filter(country => {
+         return country.Activities && country.Activities.some(activity => activity.name === activityName);
+      });
+      dispatch({ type: ActionTypes.GET_COUNTRIES_WITH_ACTIVITIES_BY_NAME, payload: filtered });
    } catch (error) {
       console.log(error);
    }

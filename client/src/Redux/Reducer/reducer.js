@@ -5,10 +5,9 @@ const initialState = {
    allCountriesCopy: [],
    countryDetail: {},
    allActivities: [],
-   filteredCountries: [],
    numPage: 1,
-   filter: 'All',
-   sortOption: 'ASC'
+   filter: '',
+   sortOption: ''
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -54,6 +53,11 @@ const reducer = (state = initialState, { type, payload }) => {
             ...state,
             allActivities: payload
          };
+      case ActionTypes.GET_ALL_ACTIVITIES:
+         return {
+            ...state,
+            allActivities: payload
+         }
       case ActionTypes.SET_FILTERED_COUNTRIES:
          return {
             ...state,
@@ -63,6 +67,16 @@ const reducer = (state = initialState, { type, payload }) => {
          return {
             ...state,
             sortOption: payload
+         };
+      case ActionTypes.GET_ALL_COUNTRIES_WITH_ACTIVITIES:
+         return {
+            ...state,
+            allCountriesCopy: payload,
+         };
+      case ActionTypes.GET_COUNTRIES_WITH_ACTIVITIES_BY_NAME:
+         return {
+            ...state,
+            allCountriesCopy: payload
          };
       default:
          return state;

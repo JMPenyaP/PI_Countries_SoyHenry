@@ -1,7 +1,6 @@
-const { Country, Activity } = require("../db");
-//const { op } = require('sequelize');
-/* const axios = require("axios");
-const { cleanerApiInfo } = require("../utils/index"); */
+const { Country, Activity, Country_Activities } = require("../db");
+const { Op } = require("sequelize");
+//const axios = require("axios");
 
 //! Crear un nuevo País
 const createCountry = async (id, name, flag, continent, capital, subregion, area, population) => {
@@ -15,7 +14,7 @@ const getCountryById = async (id) => {
             where: { id },
             include: {
                 model: Activity,
-                attributes: ["name", "difficulty"],
+                attributes: ["name", "difficulty", "duration", "season"],
                 through: { attributes: ["CountryId", "ActivityId"] }
             },
             attributes: {
@@ -48,18 +47,53 @@ const getAllCountries = async () => {
 //! Obtener un País por Nombre
 const getCountryByName = async (name) => {
     const dbCountry = await Country.findAll({ where: { name: name } });
-
-    /*     const apiCountryResponse = (await axios.get("http://localhost:5000/countries/")).data;
-        const apiCountry = cleanerApiInfo(apiCountryResponse);
-        const countryFilter = apiCountry.filter((country) => country.nombre === name);
-        return [...countryFilter, ...dbCountry]; */
-
     return dbCountry;
 };
+
+//! Obtener Países con al menos una Actividad
+const getAllCountriesWithActivities = async () => {
+    const countriesWithActivities = await Country.findAll({
+        include: [
+            {
+                model: Activity,
+                attributes: ["name", "difficulty", "duration", "season"],
+                through: { attributes: [] }
+            }
+        ],
+        where: {
+            "$Activities.id$": {
+                [Op.not]: null
+            }
+        }
+    });
+
+    return countriesWithActivities;
+};
+
+//! Obtener Países con una Actividad especifica
+const getCountriesWithActivityByName = async (activityName) => {
+    const countriesWithSpecificActivity = await Country.findAll({
+        include: [
+            {
+                model: Activity,
+                attributes: ["name", "difficulty", "duration", "season"],
+                through: { attributes: ["CountryId", "ActivityId"] },
+                where: {
+                    name: activityName
+                }
+            }
+        ]
+    });
+
+    return countriesWithSpecificActivity;
+};
+
 
 module.exports = {
     createCountry,
     getCountryById,
     getAllCountries,
-    getCountryByName
+    getCountryByName,
+    getAllCountriesWithActivities,
+    getCountriesWithActivityByName,
 };
