@@ -27,6 +27,11 @@ export const nextPage = () => ({ type: ActionTypes.NEXT_PAGE });
 
 export const prevPage = () => ({ type: ActionTypes.PREV_PAGE });
 
+export const setNumPage = (pageNumber) => ({
+   type: ActionTypes.SET_NUM_PAGE,
+   payload: pageNumber
+});
+
 export const getCountryById = (id) => async (dispatch) => {
    try {
       const { data } = await axios.get(`http://localhost:3001/countries/${id}`);
@@ -68,24 +73,19 @@ export const getAllActivities = () => async (dispatch) => {
    }
 };
 
-export const getAllCountriesWithActivities = () => async (dispatch) => {
+export const getAllCountriesWithActivities = (activityName = null) => async (dispatch) => {
    try {
       const response = await axios.get("http://localhost:3001/countries/activities");
       const dataResponse = response.data;
-      dispatch({ type: ActionTypes.GET_ALL_COUNTRIES_WITH_ACTIVITIES, payload: dataResponse });
-   } catch (error) {
-      console.log(error);
-   }
-};
 
-export const getCountriesWithActivityByName = (activityName) => async (dispatch) => {
-   try {
-      const response = await axios.get(`http://localhost:3001/countries/activities`);
-      const dataResponse = response.data;
-      const filtered = dataResponse.filter(country => {
-         return country.Activities && country.Activities.some(activity => activity.name === activityName);
-      });
-      dispatch({ type: ActionTypes.GET_COUNTRIES_WITH_ACTIVITIES_BY_NAME, payload: filtered });
+      if (activityName === 'All') {
+         dispatch({ type: ActionTypes.GET_ALL_COUNTRIES_WITH_ACTIVITIES, payload: dataResponse });
+      } else {
+         const filtered = dataResponse.filter(country => {
+            return country.Activities && country.Activities.some(activity => activity.name === activityName);
+         });
+         dispatch({ type: ActionTypes.GET_ALL_COUNTRIES_WITH_ACTIVITIES, payload: filtered });
+      }
    } catch (error) {
       console.log(error);
    }

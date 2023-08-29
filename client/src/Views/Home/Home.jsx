@@ -1,6 +1,6 @@
-import style from './Home.module.css'
 import NavBar from '../../Components/NavBar/NavBar'
 import Cards from '../../Components/Cards/Cards'
+import style from './Home.module.css'
 
 export default function home() {
     return (

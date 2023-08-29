@@ -9,12 +9,11 @@
    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
    background-color: #ffffff;
    text-align: center;
-   width: calc(80% - 40px);
+   width: calc(90% - 40px);
    /* Ancho del 25% y se resta el margen */
    margin: 10px auto;
    transition: transform 0.2s ease-in-out;
    flex-direction: row;
-
    display: flex;
    flex-wrap: wrap;
    /* Permite que los elementos se envuelvan cuando no hay suficiente espacio */
@@ -25,8 +24,9 @@
 }
 
 .column,
-.column2 {
-   flex-basis: calc(40% - 10px);
+.column2,
+.column3 {
+   flex-basis: calc(33% - 10px);
    /* Ancho del 50% menos los márgenes entre las columnas */
    margin: 5px;
    /* Márgenes entre las columnas */
@@ -51,10 +51,21 @@
    border-radius: 12px;
 }
 
+.column3 {
+   text-align: left;
+   /*  flex: 1; */
+   /* Distribuye el espacio disponible de manera equitativa entre las columnas */
+   padding: 20px;
+   /* Espacio interno para separar el contenido */
+   border: 1px solid #ccc;
+   border-radius: 12px;
+}
+
 @media (max-width: 768px) {
 
    .column,
-   .column2 {
+   .column2,
+   .column3 {
       flex-basis: 100%;
       /* Ancho completo en pantallas pequeñas */
       margin: 10px 0;
@@ -66,9 +77,10 @@
    transform: scale(1.05);
 } */
 
-.image {
+.column img {
    max-width: 90%;
    /* La imagen ocupará como máximo el ancho del contenedor */
+   border: 1px #2a68ff solid;
    height: auto;
    /* El alto se ajustará automáticamente para mantener la proporción */
    overflow: hidden;

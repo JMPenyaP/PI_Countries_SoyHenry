@@ -1,8 +1,8 @@
-import style from './DetailPage.module.css'
 import { getCountryDetail, disassembleDetail } from '../../Redux/Actions/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom';
+import style from './DetailPage.module.css'
 
 export default function Detail() {
    const { id } = useParams();
@@ -37,7 +37,7 @@ export default function Detail() {
                <h4>Population</h4>
                <h2>{countryDetail.population}</h2>
             </div>
-            <div>
+            <div className={style.column3}>
                <h2>Activities:</h2>
                {countryDetail.Activities ? (
                   <ul>
@@ -46,7 +46,7 @@ export default function Detail() {
                            <div>
                               <p><b>Name: {activity.name}</b></p>
                               <p>Difficulty: {activity.difficulty}</p>
-                              <p>Duration: {activity.duration}</p>
+                              <p>Duration: {activity.duration} horas</p>
                               <p>Season: {activity.season}</p>
                            </div>
                         </li>

@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getCountryByName } from '../../Redux/Actions/actions'
+import { getCountryByName, setNumPage } from '../../Redux/Actions/actions'
 import style from './SearchBar.module.css';
 
 export default function SearchBar() {
    const dispatch = useDispatch();
    const [name, setName] = useState('');
 
+   const handlePageChange = () => {
+      dispatch(setNumPage(1));
+   }
+
    const handleInputChange = (event) => {
       const searchText = event.target.value;
       setName(searchText);
       dispatch(getCountryByName(searchText));
+      handlePageChange(1);
    };
 
    const handleClearClick = () => {
       setName('');
       dispatch(getCountryByName(''));
+      handlePageChange(1);
    };
 
    return (
@@ -38,34 +44,3 @@ export default function SearchBar() {
       </div>
    );
 }
-
-
-
-/*
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { getCountryByName } from '../../Redux/Actions/actions'
-
-export default function SearchBar() {
-   const dispatch = useDispatch();
-   const [name, setName] = useState('');
-
-   const handleInputChange = (event) => {
-      const searchText = event.target.value;
-      setName(searchText);
-      dispatch(getCountryByName(searchText));
-   };
-   
-   return (
-      <div>
-         <label htmlFor="searchInput">Search your Country: </label>
-         <input
-            type="text"
-            id="searchInput"
-            value={name}
-            onChange={handleInputChange}
-         />
-      </div>
-   );
-}
-*/

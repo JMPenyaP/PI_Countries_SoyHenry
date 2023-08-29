@@ -7,7 +7,7 @@ import style from './Form.module.css';
 
 const validation = (input) => {
     let errors = {};
-    const regexName = /^[a-zA-Z ]+$/;
+    const regexName = /^[A-Za-zÁáÉéÍíÓóÚúÜüÑñ]+$/;
     const regexNum = /^[1-96][0-9]?$/; // /^[0-9]+$/;
 
     if (!regexName.test(input.name)) {
@@ -44,7 +44,6 @@ export default function CreateActivity() {
         return () => dispatch(disassembleCountries());
     }, [dispatch]);
 
-    //INICIO ========================================================================
     const [selectedCountries, setSelectedCountries] = useState([]);
 
     const countryOptions = countries.map(country => ({
@@ -64,7 +63,6 @@ export default function CreateActivity() {
             countries: [...selectedCountryCodes]
         })
     };
-    //FIN ======================================================================
 
     const [activity, setActivity] = useState({
         name: "",
@@ -109,18 +107,6 @@ export default function CreateActivity() {
             alert("Select at least one country");
             return;
         }
-
-        //const selectedCountryCodes = selectedCountries.map(country => country.id);
-        /*const newActivity = {
-            
-        };*/
-        /*
-        console.log("AQUIIIIII", selectedCountryCodes)
-        setActivity({
-            ...activity,
-            countries: selectedCountryCodes //selectedCountryIds
-        })
-        */
 
         console.log("AQUIIIIII", activity)
         dispatch(postActivities(activity));

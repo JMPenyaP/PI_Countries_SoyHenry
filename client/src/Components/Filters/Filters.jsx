@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilteredCountries, getAllActivities, getAllCountriesWithActivities, getCountriesWithActivityByName } from '../../Redux/Actions/actions';
+import { setFilteredCountries, getAllActivities, getAllCountriesWithActivities, setNumPage } from '../../Redux/Actions/actions';
 import styles from './Filters.module.css';
-//import { element } from 'prop-types';
 
 const continentOptions = [
    { value: 'All', label: 'All countries' },
@@ -18,10 +17,11 @@ const continentOptions = [
 export default function Filters() {
    const dispatch = useDispatch();
    const countries = useSelector(state => state.allCountries);
-   const countriesCopy = useSelector(state => state.allCountriesCopy);
-   const filteredCountries = useSelector(state => state.filteredCountries);
    const allActivities = useSelector(state => state.allActivities);
-   console.log("TODAS LAS ACTIVITIES:====", allActivities)
+
+   const handlePageChange = () => {
+      dispatch(setNumPage(1));
+   }
 
    const handleFilterContinent = (event) => {
       const selectedContinent = event.target.value;
@@ -31,31 +31,30 @@ export default function Filters() {
          const filtered = countries.filter(country => country.continent === selectedContinent);
          dispatch(setFilteredCountries(filtered));
       }
+      handlePageChange(1);
    }
-   //INICIO===========================
+
    useEffect(() => {
-      dispatch(getAllActivities())
+      dispatch(getAllActivities());
    }, [dispatch])
 
-
-
-   const handleFilterCountryWithActivity = (event) => {
+   const handleAllCountriesWithActivities = (event) => {
       const selectedActivity = event.target.value;
-      if (selectedActivity === 'All') {
-         dispatch(getAllCountriesWithActivities());
-      } else {
-         dispatch(getCountriesWithActivityByName(selectedActivity));
-      }
+      dispatch(getAllCountriesWithActivities(selectedActivity));
+      handlePageChange(1);
+   }
+
+   const handleResetFilters = () => {
+      dispatch(setFilteredCountries(countries));
    }
 
    let values = allActivities.map(name => name.name);
 
    const onlyValues = [...new Set(values)];
 
-   //FIN================================
    return (
       <div className={styles.container}>
-         <h4>Filter By Continent: </h4>
+         <h4>Filters: </h4>
          <select
             onChange={handleFilterContinent}
             title='Click here to filter by continent'
@@ -69,17 +68,16 @@ export default function Filters() {
          </select>
 
          <select
-            onChange={handleFilterCountryWithActivity}
+            onChange={handleAllCountriesWithActivities}
             title="Select your Activity"
             name="activity"
          >
-            <option>Select your Activity</option>
             <option key="All" value="All">All Activities</option>
             {onlyValues.map(option => (
                <option key={option} value={option}>{option}</option>
             ))}
          </select>
-
+         <button onClick={handleResetFilters}>Reset Filters</button>
       </div>
    )
 }
