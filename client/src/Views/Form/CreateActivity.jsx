@@ -7,7 +7,7 @@ import style from './Form.module.css';
 
 const validation = (input) => {
     let errors = {};
-    const regexName = /^[A-Za-zÁáÉéÍíÓóÚúÜüÑñ]+$/;
+    const regexName = /^[A-Za-zÁáÉéÍíÓóÚúÜüÑñ ]+$/;
     const regexNum = /^[1-96][0-9]?$/; // /^[0-9]+$/;
 
     if (!regexName.test(input.name)) {
@@ -87,7 +87,6 @@ export default function CreateActivity() {
             ...activity,
             [id]: value
         });
-        /*}*/
 
         setErrors(
             validation({
@@ -97,9 +96,6 @@ export default function CreateActivity() {
         )
     };
 
-    console.log("CAMPOSSSSS", activity.name)
-    console.log("CAMPO DURATION", activity.duration)
-
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -108,7 +104,6 @@ export default function CreateActivity() {
             return;
         }
 
-        console.log("AQUIIIIII", activity)
         dispatch(postActivities(activity));
 
         setActivity({

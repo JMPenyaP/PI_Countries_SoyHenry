@@ -14,11 +14,11 @@ conn.sync({ force: false }).then(async () => {
       try {
         const countriesFromAPI = await Country.findAll();
         if (!countriesFromAPI.length) {
-          const response = await axios.get(API);
+          /* const response = await axios.get(API);
           const cleanResponse = cleanerApiInfo(response.data);
-          await Country.bulkCreate(cleanResponse);
+          await Country.bulkCreate(cleanResponse); */
 
-          /*const { data } = await axios.get(API);
+          const { data } = await axios.get(API);
           const cleanApiInfo = data.map((info) => ({
             id: info.cca3,
             name: info.name.common,
@@ -29,7 +29,7 @@ conn.sync({ force: false }).then(async () => {
             area: info.area,
             population: info.population,
           }));
-          await Country.bulkCreate(cleanApiInfo)*/
+          await Country.bulkCreate(cleanApiInfo)
         }
       } catch (error) {
         console.error("Error while fetching and processing API data:", error);

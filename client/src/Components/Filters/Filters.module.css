@@ -10,7 +10,8 @@
     padding: 10px;
 }
 
-.container select {
+.container select,
+.container button {
     margin: 0;
     padding: 10px;
     margin-right: 4px;

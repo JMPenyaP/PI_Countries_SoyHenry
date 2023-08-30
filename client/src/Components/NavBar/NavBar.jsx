@@ -10,6 +10,9 @@ export default function NavBar() {
          <button>
             <Link to='/form'>Create Activity</Link>
          </button>
+         <button>
+            <Link to='/'>Landing</Link>
+         </button>
       </div>
    )
 }
